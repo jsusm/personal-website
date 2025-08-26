@@ -1,0 +1,76 @@
+---
+import { Image } from "astro:assets";
+import ProfileImage from "../../assets/profileImage0.jpg";
+---
+
+<section class="grid md:grid-cols-5 items-center gap-8">
+	<div class="md:col-span-3 space-y-4 order-3 md:order-2">
+		<h1 class="text-2xl lg:text-4xl font-semibold">
+			Hello I am<br /> Jesus Marcano
+		</h1>
+		<p class="text-lg lg:text-xl max-w-lg">
+			Hi, I am a full stack web developer with a year of
+			professional experience, and more than 6 years
+			programming.
+		</p>
+		<p class="font-bold text-lg">
+			<a
+				href=""
+				class="text-blue-400 hover:text-white hover:bg-blue-600 p-1 rounded"
+				>[Contact me]</a
+			>
+			<a
+				href=""
+				class="text-blue-400 hover:text-white hover:bg-blue-600 p-1 rounded"
+				>[cv]</a
+			>
+			<a
+				href=""
+				class="text-blue-400 hover:text-white hover:bg-blue-600 p-1 rounded"
+				>[github]</a
+			>
+			<a
+				href=""
+				class="text-blue-400 hover:text-white hover:bg-blue-600 p-1 rounded"
+				>[Linkeding]</a
+			>
+		</p>
+	</div>
+	<div
+		class="w-full flex justify-center items-center h-full md:col-span-2 order-2"
+	>
+		<div class="w-full flex justify-center items-center relative">
+			<Image
+				class="rounded-full absolute p-4 w-[80%] max-w-[250px] lg:max-w-[300px]"
+				src={ProfileImage}
+				alt="A photo of Jesus Marcano smiling to the camara"
+				width={300}
+				height={300}
+			/>
+			<svg
+				viewBox="0 0 100 100"
+				class="animate-rotate max-w-[300px] lg:max-w-[365px]"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					id="circlePath"
+					d="
+      M 10, 50
+      a 40,40 0 1,1 80,0
+      40,40 0 1,1 -80,0
+    "
+					fill="url(#imgPattern)"></path>
+				<text>
+					<textPath
+						class="text-[6px]"
+						href="#circlePath"
+						fill="oklch(42.4% 0.199 265.638)"
+					>
+						a lot of things are interactive
+						in this page, click them
+					</textPath>
+				</text>
+			</svg>
+		</div>
+	</div>
+</section>

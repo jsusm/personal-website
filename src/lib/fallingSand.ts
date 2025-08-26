@@ -74,41 +74,39 @@ export default class FallingSand implements Paintable {
   }
   draw(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement): void {
     this.counter++;
-    if (1) {
-      if (this.mouseIn && this.mouseClick && Math.round(this.mousePos[0] / 4) < this.cols) {
-        console.log(Math.round(this.mousePos[0] / 4), Math.round(this.mousePos[1] / 4))
-        this.particles[Math.round(this.mousePos[0] / 4)][Math.round(this.mousePos[1] / 4)] = 1
-      }
-      let takeLeft = Math.random() >= 0.5
+    if (this.mouseIn && Math.round(this.mousePos[0] / 4) < this.cols) {
+      this.particles[Math.round(this.mousePos[0] / 4)][Math.round(this.mousePos[1] / 4)] = this.mouseClick ? (this.counter & 100) + 2 : 1
+    }
+    let takeLeft = Math.random() >= 0.5
 
-      if (this.counter % 4 == 0) {
-        this.particles[16][0] = 1
-      }
-      this.updateRef()
-      this.clearParticles()
+    if (this.counter % 8 == 0) {
+      this.particles[16][0] = 1
+    }
+    this.updateRef()
+    this.clearParticles()
 
-      for (let i = 0; i < this.cols; i++) {
-        for (let j = this.rows - 1; j >= 0; j--) {
-          // last row
-          if (this.particlesRef[i][j] == 0) continue
-          else if (j == this.rows - 1) {
-            this.particles[i][j] = 1;
-          }
-          else if (this.particlesRef[i][j + 1] == 0) {
-            this.particles[i][j + 1] = 1;
-          }
-          else if (i < this.cols - 1 && this.particlesRef[i + 1][j + 1] == 0 && !takeLeft) {
-            this.particles[i + 1][j + 1] = 1;
-          }
-          else if (i > 0 && this.particlesRef[i - 1][j + 1] == 0) {
-            this.particles[i - 1][j + 1] = 1;
-          }
-          else if (i < this.cols - 1 && this.particlesRef[i + 1][j + 1] == 0 && takeLeft) {
-            this.particles[i + 1][j + 1] = 1;
-          }
-          else {
-            this.particles[i][j] = 1;
-          }
+    for (let i = 0; i < this.cols; i++) {
+      for (let j = this.rows - 1; j >= 0; j--) {
+        const cv = this.particlesRef[i][j]
+        // last row
+        if (this.particlesRef[i][j] == 0) continue
+        else if (j == this.rows - 1) {
+          this.particles[i][j] = cv;
+        }
+        else if (this.particlesRef[i][j + 1] == 0) {
+          this.particles[i][j + 1] = cv;
+        }
+        else if (i < this.cols - 1 && this.particlesRef[i + 1][j + 1] == 0 && !takeLeft) {
+          this.particles[i + 1][j + 1] = cv;
+        }
+        else if (i > 0 && this.particlesRef[i - 1][j + 1] == 0) {
+          this.particles[i - 1][j + 1] = cv;
+        }
+        else if (i < this.cols - 1 && this.particlesRef[i + 1][j + 1] == 0 && takeLeft) {
+          this.particles[i + 1][j + 1] = cv;
+        }
+        else {
+          this.particles[i][j] = cv;
         }
       }
     }
@@ -116,10 +114,14 @@ export default class FallingSand implements Paintable {
     for (let i = 0; i < this.cols; i++) {
       for (let j = 0; j < this.rows; j++) {
         if (this.particles[i][j] == 1) {
+          ctx.fillStyle = 'oklch(98.7% 0.022 95.277)'
+          ctx.fillRect(i * 4, j * 4, 4, 4);
+        }
+        if (this.particles[i][j] > 1) {
+          ctx.fillStyle = `oklch(92.4% 0.30 ${this.particles[i][j] * 360 / 100 - 2})`
           ctx.fillRect(i * 4, j * 4, 4, 4);
         }
       }
     }
-    // ctx.fill()
   }
 }

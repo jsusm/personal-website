@@ -2,6 +2,10 @@ import type { Paintable } from "./anodized";
 import { CubicBezierValue } from "./cubicBezierValue";
 import { wave } from "./sineWave";
 
+const interpolation = function(curr: number, end: number, percent: number) {
+  return curr + (end - curr) * percent
+}
+
 export default class DrawWave implements Paintable {
 
   step = 0;
@@ -12,6 +16,8 @@ export default class DrawWave implements Paintable {
   mousePos = [0, 0];
   mouseIn = false;
   mouseClick = false;
+
+  xPos = 0;
 
   distorsion = new CubicBezierValue([0.76, 0, 0.24, 1], 1);
   periodChange = new CubicBezierValue([0.76, 0, 0.24, 1], 2);
@@ -68,6 +74,7 @@ export default class DrawWave implements Paintable {
   draw(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement): void {
     const d = this.distorsion.value();
     const pc = this.periodChange.value();
+    this.xPos = interpolation(this.xPos, this.mousePos[0], 0.1)
 
     this.step = 0;
     this.offset += (d == 0 || d == 1) ? this.speed : this.speed * 0.5;
@@ -83,7 +90,7 @@ export default class DrawWave implements Paintable {
       // ctx.lineTo(i, wave(step, ampl , period, offset));
       ctx.lineTo(
         i,
-        wave(this.step, Math.pow(Math.abs(Math.cos(((i - this.mousePos[0]) / canvas.width) * (Math.PI))), 1 + d * 2) * (this.ampl + (this.mousePos[1] / canvas.height) * 20), this.period - pc * 5, this.offset),
+        wave(this.step, Math.pow(Math.abs(Math.cos(((i - this.xPos) / canvas.width) * (Math.PI))), 1 + d * 2) * (this.ampl + (this.xPos / canvas.height) * 20), this.period - pc * 5, this.offset),
       );
     }
     ctx.stroke();

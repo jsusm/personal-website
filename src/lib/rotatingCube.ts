@@ -53,9 +53,6 @@ export default class RotatingCube implements Paintable {
     });
     canvas.addEventListener("pointerdown", () => {
       this.touchBezier.active = true
-      this.coloridx = (this.coloridx + 1) % this.colors.length;
-      ctx.fillStyle = this.colors[this.coloridx]
-      ctx.strokeStyle = this.colors[this.coloridx]
     })
   }
   draw(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement): void {
@@ -99,6 +96,10 @@ export default class RotatingCube implements Paintable {
 
     if (this.touchBezier.time >= 1) {
       this.touchBezier.active = false
+
+      this.coloridx = (this.coloridx + 1) % this.colors.length;
+      ctx.fillStyle = this.colors[this.coloridx]
+      ctx.strokeStyle = this.colors[this.coloridx]
     }
 
     const scale = 280 - this.touchBezier.value() * 100

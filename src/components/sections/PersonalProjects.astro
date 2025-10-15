@@ -1,37 +1,60 @@
+---
+import SchemeInterpreterImg from "../../assets/scheme-interpreter.png";
+import PasswordManagerImg from "../../assets/passwordManager.png";
+import { Image } from "astro:assets";
+---
+
 <section class="mt-32">
 	<h1 class="text-2xl lg:text-4xl font-bold mb-8">Personal Projects</h1>
-	<div class="space-y-8">
-		<article class="flex flex-col md:flex-row gap-4 items-center">
+	<div class="space-y-12">
+		<article
+			class="flex flex-col md:flex-row gap-4 overflow-hidden items-center"
+		>
 			<div
-				class="min-h-[200px] md:min-w-[260px] w-[260px] border border-neutral-700 rounded-lg flex-1"
+				class="md:min-w-[380px] md:max-w-[380px] max-w-[360px] w-full border border-neutral-700 rounded-lg flex-1"
 			>
+				<Image
+					class="rounded-lg"
+					alt="Scheme interpreter project"
+					src={SchemeInterpreterImg}
+				/>
 			</div>
 			<div class="space-y-2">
 				<p class="text-xl lg:text-2xl font-bold">
 					Programming language implementation
 				</p>
-				<p class="lg:text-lg">
-					I implemented a programming language from scratch, because a
-					want to learn about lisp programming language, heard that it
-					was one of the easiest to implement so a read a book and i
-					implement it
+				<p class="lg:text-lg text-neutral-200">
+					I implemented a programming language from scratch because I
+					wanted to learn about the Lisp programming language. I had
+					heard that it was relatively easy to implement, so after a
+					long time spent building and learning about parsing and
+					interpreters, I finally built it. I've learned a lot about
+					how they work, and it was very enjoyable! I've also made a
+					tutorial for people to learn how to use it. I really
+					recommend that you try it.
 				</p>
 			</div>
 		</article>
 		<article class="flex flex-col md:flex-row gap-4 items-center">
 			<div
-				class="min-h-[200px] min-w-[260px] w-[260px] border border-neutral-700 rounded-lg flex-1"
+				class="md:min-w-[380px] md:max-w-[380px] max-w-[360px] w-full border border-neutral-700 rounded-lg flex-1"
 			>
+				<Image
+					class="rounded-lg"
+					alt="Scheme interpreter project"
+					src={PasswordManagerImg}
+				/>
 			</div>
 			<div class="space-y-2">
-				<p class="text-xl lg:text-2xl font-bold">
-					Administration system for my Dad
-				</p>
-				<p class="lg:text-lg">
-					My dad is a very smart person, he develop a framework in
-					exel defining the administration process for students in the
-					school he works in, so I decide to turn he's ideas to a web
-					app
+				<p class="text-xl lg:text-2xl font-bold">Password Manager</p>
+				<p class="lg:text-lg text-neutral-200">
+					I used to save my passwords in a .txt file in plain text on
+					my own computer, without any encryption. I could have used a
+					third-party app, but I thought it was a very good
+					opportunity to solve this problem by building my own
+					software. This app encrypts all the information and lets you
+					download the data in a JSON file. It is super secure, and I
+					use it every day.
 				</p>
 			</div>
 		</article>

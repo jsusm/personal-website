@@ -6,8 +6,29 @@
 			a message, so you can do it in the form bellow
 		</p>
 	</div>
-	<div>
-		<div class="w-[300px] h-[300px] border rounded-lg border-neutral-400">
+	<div class="group">
+		<canvas id="game-of-life" class="w-[300px] h-[300px]"> </canvas>
+		<div
+			class="flex justify-center gap-4 text-blue-500 opacity-0 group-hover:opacity-100 has-focus:opacity-100 transition"
+		>
+			<button
+				id="gol-canvas-control-start-stop"
+				class="text-blue-400 hover:text-white hover:bg-blue-600 p-1 rounded font-bold active:bg-blue-700 ring-2 ring-offset-2 ring-offset-neutral-950 ring-transparent focus-within:ring-blue-600 outline-none"
+			>
+				[stop]
+			</button>
+			<button
+				id="gol-canvas-control-start-next"
+				class="text-blue-400 hover:text-white hover:bg-blue-600 p-1 rounded font-bold active:bg-blue-700 ring-2 ring-offset-2 ring-offset-neutral-950 ring-transparent focus-within:ring-blue-600 outline-none"
+			>
+				[next]
+			</button>
+			<button
+				id="gol-canvas-control-clear"
+				class="text-blue-400 hover:text-white hover:bg-blue-600 p-1 rounded font-bold active:bg-blue-700 ring-2 ring-offset-2 ring-offset-neutral-950 ring-transparent focus-within:ring-blue-600 outline-none"
+			>
+				[clear]
+			</button>
 		</div>
 	</div>
 </section>

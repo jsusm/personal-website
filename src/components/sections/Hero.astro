@@ -8,7 +8,7 @@ import ProfileImage from "../../assets/profileImage0.jpg";
 		<h1 class="text-2xl lg:text-4xl font-semibold">
 			Hello I am<br /> Jesus Marcano
 		</h1>
-		<p class="text-lg lg:text-xl max-w-lg">
+		<p class="text-lg lg:text-xl md:max-w-lg">
 			Hi, I am a full stack web developer with a year of
 			professional experience, and more than 6 years
 			programming.
@@ -39,7 +39,9 @@ import ProfileImage from "../../assets/profileImage0.jpg";
 	<div
 		class="w-full flex justify-center items-center h-full md:col-span-2 order-2"
 	>
-		<div class="w-full flex justify-center items-center relative">
+		<div
+			class="w-full flex justify-center items-center relative overflow-hidden"
+		>
 			<Image
 				class="rounded-full absolute p-4 w-[80%] max-w-[250px] lg:max-w-[300px]"
 				src={ProfileImage}

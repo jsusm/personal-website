@@ -29,9 +29,11 @@ import ContactSection from "../components/sections/Contact.astro";
 			import DrawWave from "../lib/wave.ts";
 			import FallingSand from "../lib/fallingSand.ts";
 			import RotatingCube from "../lib/rotatingCube.ts";
+			import GameOfLife from "../lib/gameOfLife.ts";
 			draw("wave-function", new DrawWave());
 			draw("falling-sand", new FallingSand());
 			draw("rotating-cube", new RotatingCube());
+			draw("game-of-life", new GameOfLife());
 		</script>
 	</main>
 </Layout>
@@ -43,13 +45,12 @@ import ContactSection from "../components/sections/Contact.astro";
 	#grany-bg {
 		z-index: -1;
 		background:
-			url("../assets/Random static(1).png"),
+			0% / 300px url("../assets/Random static(1).png") repeat,
 			linear-gradient(
 				to bottom,
 				var(--color-blue-950),
 				var(--color-neutral-950)
 			);
 		opacity: 0.24;
-		background-size: 20%;
 	}
 </style>
